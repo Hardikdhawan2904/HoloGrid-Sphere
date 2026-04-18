@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HoloHands AI – Real-Time Gesture Controlled Holographic Interface</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div id="loadTitle" class="load-title">◈ HoloHands AI</div>
+  <div class="load-subtitle">REAL-TIME GESTURE CONTROLLED HOLOGRAPHIC INTERFACE</div>
+  <div class="load-bar-track"><div id="loadFill" class="load-bar-fill"></div></div>
+  <div id="loadMsg" class="load-msg">LOADING NEURAL INTERFACE...</div>
+  <div class="load-dots"><span></span><span></span><span></span></div>
+</div>
+
+<!-- Webcam feed -->
+<video id="webcam" autoplay playsinline muted></video>
+
+<!-- Three.js 3D canvas -->
+<canvas id="threeCanvas"></canvas>
+
+<!-- 2D tracking overlay -->
+<canvas id="overlay"></canvas>
+
+<!-- HUD -->
+<div id="hud">
+
+  <!-- Top-Left panel -->
+  <div class="panel tl">
+    <div class="panel-logo">◈ HoloHands AI</div>
+    <div class="panel-ver">GESTURE CONTROLLED HOLOGRAPHIC INTERFACE</div>
+    <div class="panel-div"></div>
+    <div id="lhStat"   class="stat-item">◉ LEFT HAND: OFFLINE</div>
+    <div id="rhStat"   class="stat-item">◉ RIGHT HAND: OFFLINE</div>
+    <div id="modeStat" class="stat-item mode">◉ MODE: STANDBY</div>
+  </div>
+
+  <!-- Top-Right panel (mode badges) -->
+  <div class="panel tr badge-panel">
+    <div id="holoLabel" class="badge hidden">◈ HOLOGRAPHIC CORE ACTIVE</div>
+    <div id="linkLabel" class="badge cyan hidden">⚡ ENERGY LINK ACTIVE</div>
+  </div>
+
+  <!-- Bottom-Left panel -->
+  <div class="panel bl">
+    <div class="panel-ver">SENSOR DATA</div>
+    <div class="dbg-grid">
+      <span class="dbg-k">L.PALM</span><span id="lPalmDbg" class="dbg-v">---</span>
+      <span class="dbg-k">R.PALM</span><span id="rPalmDbg" class="dbg-v">---</span>
+      <span class="dbg-k">LINK</span><span id="linkDbg" class="dbg-v">OFFLINE</span>
+    </div>
+  </div>
+
+  <!-- Bottom-Right panel -->
+  <div class="panel br">
+    <div id="fpsCnt" class="fps">FPS: --</div>
+    <div class="sig-bars">
+      <span class="bar"></span><span class="bar"></span>
+      <span class="bar"></span><span class="bar"></span>
+    </div>
+  </div>
+
+  <!-- Crosshair -->
+  <div class="crosshair">
+    <div class="ch-h"></div>
+    <div class="ch-v"></div>
+    <div class="ch-c"></div>
+  </div>
+
+  <!-- Scan sweep -->
+  <div class="scan-sweep"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
